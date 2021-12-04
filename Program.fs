@@ -1,7 +1,7 @@
 ﻿
 
 open System
-open AoC.Day1
+open AoC.Day2
 open Utils
 
 

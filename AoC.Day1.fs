@@ -1,10 +1,11 @@
 
-module AOC.Day1
+module AoC.Day1
 
 open System
 open Utils
 
-let sonarReadings = [1; 2; 3; 4; 5]
+let sonarReadings = [199;200;208;210;200;207;240;269;260;263]
+let puzzleInput = parseIntegerArrayFromFile(@"testinput.txt")
 
 
 let rec Sum(readings:list<int>, previousValue:int) = 
@@ -28,9 +29,12 @@ let rec SumOfNextNTerms(entries:list<int>, n:int, total:int) =
 let rec GetSlidingWindowValues(sourceList:list<int>, targetList:list<int>, windowSize:int) = 
     if sourceList.Length < windowSize then targetList // if there aren't enough numbers, then return whatever is part of the list
     else GetSlidingWindowValues(sourceList.Tail, targetList @ [SumOfNextNTerms(sourceList, windowSize, 0)], windowSize)
-
-
-let rec CountIncreasesInSlidingWindow(readings:list<int>, previousValue:Nullable<int>, windowSize:int) =
-    let thisValue = SumOfNextNTerms(readings, windowSize, 0)
-    printfn "this value = '%i'" thisValue
     
+let firstStar () =
+    let output = CountIncreases(puzzleInput, Nullable()) 
+    printfn "output is %i" output
+    
+let secondStar () =
+    let windowValues = GetSlidingWindowValues(puzzleInput, list.Empty, 3)
+    let output = CountIncreases(windowValues, Nullable());
+    printfn "output is %i" output

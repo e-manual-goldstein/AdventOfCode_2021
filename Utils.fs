@@ -2,7 +2,10 @@ module Utils
 
 let readLines filePath = System.IO.File.ReadLines(filePath);;
 
-
+let rec Sum(integers:list<int>) =
+    if integers.IsEmpty then 0
+    else if integers.Length = 1 then integers.Head
+    else integers.Head + Sum(integers.Tail)
 
 let IntegerSeqFromFile (filePath:string) = seq {
     use sr = new System.IO.StreamReader (filePath)

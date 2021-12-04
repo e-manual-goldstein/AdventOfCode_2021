@@ -6,7 +6,8 @@
   <ItemGroup>
     <Compile Include="Utils.fs" />
     <Compile Include="LearningModule.fs" />
-    <Compile Include="AoC_1A.fs" />
+    <Compile Include="AoC.Day1.fs" />
+    <Compile Include="AoC.Day2.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ open System
 open Utils
 
 let sonarReadings = [199;200;208;210;200;207;240;269;260;263]
-let puzzleInput = parseIntegerArrayFromFile(@"Day1_Input.txt")
+let puzzleInput = parseIntegerListFromFile(@"Day1_Input.txt")
 
 
 let rec Sum(readings:list<int>, previousValue:int) = 

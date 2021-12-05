@@ -8,6 +8,7 @@
     <Compile Include="LearningModule.fs" />
     <Compile Include="AoC.Day1.fs" />
     <Compile Include="AoC.Day2.fs" />
+    <Compile Include="AoC.Day3.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

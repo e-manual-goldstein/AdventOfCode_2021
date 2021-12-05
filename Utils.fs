@@ -13,15 +13,29 @@ let IntegerSeqFromFile (filePath:string) = seq {
         yield sr.ReadLine () |> int
 }
 
-let parseIntegerArrayFromFile (filePath:string) = 
+let StringSeqFromFile (filePath:string) = seq {
+    use sr = new System.IO.StreamReader (filePath)
+    while not sr.EndOfStream do
+        yield sr.ReadLine ()
+}
+
+let parseIntegerListFromFile (filePath:string) = 
     IntegerSeqFromFile filePath |> List.ofSeq
 
+let parseStringListFromFile (filePath:string) = 
+    StringSeqFromFile filePath |> List.ofSeq
+
 let rec createCsv (stringList:list<'T>, output:string) =
-    //printfn $"{stringList.Head}"
     if stringList.IsEmpty then output
     else if stringList.Length = 1 then $"{stringList.Head}"
     else $"{stringList.Head}, " + createCsv (stringList.Tail, $"{output}")
 
-let printValues (entries:list<'T>) =
+let printValuesInLine (entries:list<'T>) =
     let csv = createCsv(entries, "")
     printfn "values = '%s'" csv
+
+let rec printValuesInSequence (entries:list<'T>) = 
+    if entries.IsEmpty then ()
+    else 
+        printfn $"{entries.Head}"
+        printValuesInSequence entries.Tail
